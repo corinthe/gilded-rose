@@ -29,23 +29,13 @@ public class QualityCalculator {
         decreaseQuality();
     }
 
-    private boolean isAgedBrie() {
-        return item.name.equals("Aged Brie");
-    }
-
     private boolean isBackstagePass() {
         return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
-    private boolean isSulfuras() {
-        return item.name.equals("Sulfuras, Hand of Ragnaros");
-    }
-
-    private void decreaseQuality() {
+    protected void decreaseQuality() {
         if (item.quality > 0) {
-            if (!isSulfuras()) {
-                item.quality = item.quality - 1;
-            }
+            item.quality = item.quality - 1;
         }
     }
 

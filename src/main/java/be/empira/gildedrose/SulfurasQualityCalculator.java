@@ -12,6 +12,11 @@ public class SulfurasQualityCalculator extends QualityCalculator {
     }
 
     @Override
+    protected void decreaseQuality() {
+
+    }
+
+    @Override
     protected void calculateSellIn() {
 
     }
