@@ -1,16 +1,21 @@
 package be.empira.gildedrose;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GildedRose {
     Item[] items;
 
+    private List<QualityCalculator> calculators;
+
     public GildedRose(Item[] items) {
         this.items = items;
+        calculators = Arrays.stream(items).map(QualityCalculator::new).collect(Collectors.toList());
     }
 
     public void updateQuality() {
-        Arrays.stream(items).map(QualityCalculator::new).forEach(QualityCalculator::updateQuality);
+        calculators.forEach(QualityCalculator::updateQuality);
     }
 
 
