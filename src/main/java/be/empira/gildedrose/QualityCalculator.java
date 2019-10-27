@@ -8,18 +8,18 @@ public class QualityCalculator {
     }
 
     void updateQuality() {
-        calculateQuality(item);
+        calculateQuality();
 
-        calculateSellIn(item);
+        calculateSellIn();
 
-        manageExpiration(item);
+        manageExpiration();
     }
 
-    private void manageExpiration(Item item) {
-        if (isExpired(item)) {
-            if (!isAgedBrie(item)) {
-                if (!isBackstagePass(item)) {
-                    decreaseQuality(item);
+    private void manageExpiration() {
+        if (isExpired()) {
+            if (!isAgedBrie()) {
+                if (!isBackstagePass()) {
+                    decreaseQuality();
                 } else {
                     item.quality = 0;
                 }
@@ -31,45 +31,45 @@ public class QualityCalculator {
         }
     }
 
-    private void calculateSellIn(Item item) {
-        if (!isSulfuras(item)) {
+    private void calculateSellIn() {
+        if (!isSulfuras()) {
             item.sellIn = item.sellIn - 1;
         }
     }
 
-    private void calculateQuality(Item item) {
-        if (!isAgedBrie(item) && !isBackstagePass(item)) {
-            decreaseQuality(item);
+    private void calculateQuality() {
+        if (!isAgedBrie() && !isBackstagePass()) {
+            decreaseQuality();
         } else {
-            increaseQuality(item);
+            increaseQuality();
         }
     }
 
-    private boolean isAgedBrie(Item item) {
+    private boolean isAgedBrie() {
         return item.name.equals("Aged Brie");
     }
 
-    private boolean isBackstagePass(Item item) {
+    private boolean isBackstagePass() {
         return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
-    private boolean isSulfuras(Item item) {
+    private boolean isSulfuras() {
         return item.name.equals("Sulfuras, Hand of Ragnaros");
     }
 
-    private void decreaseQuality(Item item) {
+    private void decreaseQuality() {
         if (item.quality > 0) {
-            if (!isSulfuras(item)) {
+            if (!isSulfuras()) {
                 item.quality = item.quality - 1;
             }
         }
     }
 
-    private void increaseQuality(Item item) {
+    private void increaseQuality() {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
 
-            if (isBackstagePass(item)) {
+            if (isBackstagePass()) {
                 if (item.sellIn < 11) {
                     if (item.quality < 50) {
                         item.quality = item.quality + 1;
@@ -85,7 +85,7 @@ public class QualityCalculator {
         }
     }
 
-    private boolean isExpired(Item item) {
+    private boolean isExpired() {
         return item.sellIn < 0;
     }
 }
