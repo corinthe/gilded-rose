@@ -13,17 +13,21 @@ public class GildedRose {
 
             calculateSellIn(items[i]);
 
-            if (isExpired(items[i])) {
-                if (!isAgedBrie(items[i])) {
-                    if (!isBackstagePass(items[i])) {
-                        decreaseQuality(items[i]);
-                    } else {
-                        items[i].quality = 0;
-                    }
+            manageExpiration(items[i]);
+        }
+    }
+
+    private void manageExpiration(Item item) {
+        if (isExpired(item)) {
+            if (!isAgedBrie(item)) {
+                if (!isBackstagePass(item)) {
+                    decreaseQuality(item);
                 } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
+                    item.quality = 0;
+                }
+            } else {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
                 }
             }
         }
