@@ -103,7 +103,6 @@ public class GildedRoseTest {
     public void testAgedBrie_whenExpired(){
         Item[] items = new Item[]{
                 new Item("Aged Brie", 0, 20)};
-
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
