@@ -13,23 +13,7 @@ public class GildedRose {
                     && !isBackstagePass(items[i])) {
                 decreaseQuality(items[i]);
             } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-
-                    if (isBackstagePass(items[i])) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-                    }
-                }
+                increaseQuality(items[i]);
             }
 
             if (!isSulfuras(items[i])) {
@@ -68,6 +52,26 @@ public class GildedRose {
         if (item.quality > 0) {
             if (!isSulfuras(item)) {
                 item.quality = item.quality - 1;
+            }
+        }
+    }
+
+    private void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+
+            if (isBackstagePass(item)) {
+                if (item.sellIn < 11) {
+                    if (item.quality < 50) {
+                        item.quality = item.quality + 1;
+                    }
+                }
+
+                if (item.sellIn < 6) {
+                    if (item.quality < 50) {
+                        item.quality = item.quality + 1;
+                    }
+                }
             }
         }
     }
