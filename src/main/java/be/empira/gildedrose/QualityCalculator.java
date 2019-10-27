@@ -1,6 +1,9 @@
 package be.empira.gildedrose;
 
 public class QualityCalculator {
+
+    public static int MAX_QUALITY = 50;
+
     public Item item;
 
     public QualityCalculator(Item item) {
@@ -36,7 +39,7 @@ public class QualityCalculator {
     }
 
     void increaseQuality() {
-        if (item.quality < 50) {
+        if (item.quality < MAX_QUALITY) {
             item.quality = item.quality + 1;
         }
     }
