@@ -1,5 +1,7 @@
 package be.empira.gildedrose;
 
+import java.util.Arrays;
+
 public class GildedRose {
     Item[] items;
 
@@ -8,13 +10,15 @@ public class GildedRose {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++) {
-            calculateQuality(items[i]);
+        Arrays.stream(items).forEach(this::updateQuality);
+    }
 
-            calculateSellIn(items[i]);
+    private void updateQuality(Item item) {
+        calculateQuality(item);
 
-            manageExpiration(items[i]);
-        }
+        calculateSellIn(item);
+
+        manageExpiration(item);
     }
 
     private void manageExpiration(Item item) {
