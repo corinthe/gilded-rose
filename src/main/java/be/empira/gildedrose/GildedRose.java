@@ -20,7 +20,7 @@ public class GildedRose {
                 items[i].sellIn = items[i].sellIn - 1;
             }
 
-            if (items[i].sellIn < 0) {
+            if (isExpired(items[i])) {
                 if (!isAgedBrie(items[i])) {
                     if (!isBackstagePass(items[i])) {
                         decreaseQuality(items[i]);
@@ -74,5 +74,9 @@ public class GildedRose {
                 }
             }
         }
+    }
+
+    private boolean isExpired(Item item) {
+        return item.sellIn < 0;
     }
 }
