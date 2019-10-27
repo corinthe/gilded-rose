@@ -2,6 +2,7 @@ package be.empira.gildedrose;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class GildedRoseTest {
@@ -17,9 +18,8 @@ public class GildedRoseTest {
                 new Item("Sulfuras, Hand of Ragnaros", -1, 80),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-                // this conjured item does not work properly yet
-                new Item("Conjured Mana Cake", 3, 6) };
+                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49)
+        };
 
         GildedRose app = new GildedRose(items);
 
@@ -56,6 +56,22 @@ public class GildedRoseTest {
         assertEquals("Backstage passes to a TAFKAL80ETC concert", app.items[7].name);
         assertEquals(4, app.items[7].sellIn);
         assertEquals(50, app.items[7].quality);
+    }
+
+    @Test
+    @Ignore("Not yet implemented")
+    public void testConjured() {
+        Item[] items = new Item[]{
+                new Item("Conjured Mana Cake", 3, 6)
+        };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals("Conjured Mana Cake", app.items[0].name);
+        assertEquals(2, app.items[0].sellIn);
+        assertEquals(4, app.items[0].quality);
     }
 
 }
