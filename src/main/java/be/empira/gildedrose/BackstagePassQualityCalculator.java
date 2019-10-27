@@ -7,6 +7,11 @@ public class BackstagePassQualityCalculator extends QualityCalculator {
     }
 
     @Override
+    protected void calculateQuality() {
+        increaseQuality();
+    }
+
+    @Override
     protected void manageExpiration() {
         item.quality = 0;
     }

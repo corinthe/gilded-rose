@@ -25,12 +25,8 @@ public class QualityCalculator {
         item.sellIn = item.sellIn - 1;
     }
 
-    private void calculateQuality() {
-        if (isAgedBrie() || isBackstagePass()) {
-            increaseQuality();
-        } else {
-            decreaseQuality();
-        }
+    protected void calculateQuality() {
+        decreaseQuality();
     }
 
     private boolean isAgedBrie() {
@@ -53,7 +49,7 @@ public class QualityCalculator {
         }
     }
 
-    private void increaseQuality() {
+    void increaseQuality() {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
 

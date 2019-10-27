@@ -7,6 +7,11 @@ public class AgedBrieQualityCalculator extends QualityCalculator {
     }
 
     @Override
+    protected void calculateQuality() {
+        increaseQuality();
+    }
+
+    @Override
     protected void manageExpiration() {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
