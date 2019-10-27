@@ -11,7 +11,7 @@ public class GildedRose {
 
     public GildedRose(Item[] items) {
         this.items = items;
-        calculators = Arrays.stream(items).map(QualityCalculator::new).collect(Collectors.toList());
+        calculators = Arrays.stream(items).map(QualityCalculatorFactory::create).collect(Collectors.toList());
     }
 
     public void updateQuality() {
