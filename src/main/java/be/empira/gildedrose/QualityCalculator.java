@@ -26,10 +26,10 @@ public class QualityCalculator {
     }
 
     private void calculateQuality() {
-        if (!isAgedBrie() && !isBackstagePass()) {
-            decreaseQuality();
-        } else {
+        if (isAgedBrie() || isBackstagePass()) {
             increaseQuality();
+        } else {
+            decreaseQuality();
         }
     }
 
