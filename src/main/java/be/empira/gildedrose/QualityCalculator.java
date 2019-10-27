@@ -29,10 +29,6 @@ public class QualityCalculator {
         decreaseQuality();
     }
 
-    private boolean isBackstagePass() {
-        return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
-    }
-
     protected void decreaseQuality() {
         if (item.quality > 0) {
             item.quality = item.quality - 1;
