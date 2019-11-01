@@ -7,14 +7,13 @@ public class AgedBrieQualityCalculator extends QualityCalculator {
     }
 
     @Override
-    protected void calculateQuality() {
-        increaseQuality();
-    }
+    public void updateQuality() {
+        decreaseSellIn();
 
-    @Override
-    protected void manageExpiration() {
-        if (item.quality < MAX_QUALITY) {
-            item.quality = item.quality + 1;
+        if (isExpired()) {
+            increaseQualityBy(2);
+        } else {
+            increaseQualityBy(1);
         }
     }
 }

@@ -76,7 +76,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void testBackstagePass() {
+    public void testBackstagePass_whenExpired_qualityGoesTo0() {
         Item[] items = new Item[]{
                 new Item("Backstage passes to a TAFKAL80ETC concert", 0, 40)};
 
@@ -100,14 +100,14 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void testAgedBrie_whenExpired(){
+    public void testAgedBrie_whenExpired_qualityIncreasesBy2(){
         Item[] items = new Item[]{
                 new Item("Aged Brie", 0, 20)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals(21, app.items[0].quality);
+        assertEquals(22, app.items[0].quality);
     }
 
 }

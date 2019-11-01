@@ -7,17 +7,7 @@ public class SulfurasQualityCalculator extends QualityCalculator {
     }
 
     @Override
-    void increaseQuality() {
-
-    }
-
-    @Override
-    protected void decreaseQuality() {
-
-    }
-
-    @Override
-    protected void calculateSellIn() {
-
+    void updateQuality() {
+        decreaseQualityBy(0);
     }
 }
